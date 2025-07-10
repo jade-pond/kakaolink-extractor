@@ -11,6 +11,7 @@ import { toast } from '@/hooks/use-toast';
 import FileUploadZone from '@/components/FileUploadZone';
 import LinkTable from '@/components/LinkTable';
 import ExportButtons from '@/components/ExportButtons';
+import ShareButton from '@/components/ShareButton';
 
 interface ChatMessage {
   Date: string;
@@ -52,7 +53,6 @@ const Index = () => {
     
     Papa.parse(csvFile, {
       header: true,
-      encoding: 'UTF-8',
       complete: (results) => {
         const messages = results.data as ChatMessage[];
         const links: ExtractedLink[] = [];
@@ -133,61 +133,88 @@ const Index = () => {
         {extractedLinks.length > 0 && (
           <div className="space-y-6">
             {/* 통계 카드들 */}
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
               <Card className="bg-gradient-to-r from-blue-50 to-blue-100 border-blue-200">
                 <CardContent className="p-4">
-                  <div className="flex items-center gap-3">
-                    <div className="p-2 bg-blue-500 rounded-lg">
-                      <Link className="h-4 w-4 text-white" />
+                  <div className="flex items-center justify-between mb-3">
+                    <div className="flex items-center gap-3">
+                      <div className="p-2 bg-blue-500 rounded-lg">
+                        <Link className="h-4 w-4 text-white" />
+                      </div>
+                      <div>
+                        <p className="text-sm text-blue-600 font-medium">총 링크 수</p>
+                        <p className="text-2xl font-bold text-blue-700">{extractedLinks.length}</p>
+                      </div>
                     </div>
-                    <div>
-                      <p className="text-sm text-blue-600 font-medium">총 링크 수</p>
-                      <p className="text-2xl font-bold text-blue-700">{extractedLinks.length}</p>
-                    </div>
+                  </div>
+                  <div className="flex gap-1">
+                    <ExportButtons data={extractedLinks} type="csv" variant="outline" size="sm" />
+                    <ExportButtons data={extractedLinks} type="txt" variant="outline" size="sm" />
+                    <ExportButtons data={extractedLinks} type="json" variant="outline" size="sm" />
                   </div>
                 </CardContent>
               </Card>
 
               <Card className="bg-gradient-to-r from-green-50 to-green-100 border-green-200">
                 <CardContent className="p-4">
-                  <div className="flex items-center gap-3">
-                    <div className="p-2 bg-green-500 rounded-lg">
-                      <User className="h-4 w-4 text-white" />
+                  <div className="flex items-center justify-between mb-3">
+                    <div className="flex items-center gap-3">
+                      <div className="p-2 bg-green-500 rounded-lg">
+                        <User className="h-4 w-4 text-white" />
+                      </div>
+                      <div>
+                        <p className="text-sm text-green-600 font-medium">참여자 수</p>
+                        <p className="text-2xl font-bold text-green-700">{uniqueUsers.length}</p>
+                      </div>
                     </div>
-                    <div>
-                      <p className="text-sm text-green-600 font-medium">참여자 수</p>
-                      <p className="text-2xl font-bold text-green-700">{uniqueUsers.length}</p>
-                    </div>
+                  </div>
+                  <div className="flex gap-1">
+                    <ExportButtons data={extractedLinks} type="csv" variant="outline" size="sm" />
+                    <ExportButtons data={extractedLinks} type="txt" variant="outline" size="sm" />
+                    <ExportButtons data={extractedLinks} type="json" variant="outline" size="sm" />
                   </div>
                 </CardContent>
               </Card>
 
               <Card className="bg-gradient-to-r from-purple-50 to-purple-100 border-purple-200">
                 <CardContent className="p-4">
-                  <div className="flex items-center gap-3">
-                    <div className="p-2 bg-purple-500 rounded-lg">
-                      <ExternalLink className="h-4 w-4 text-white" />
+                  <div className="flex items-center justify-between mb-3">
+                    <div className="flex items-center gap-3">
+                      <div className="p-2 bg-purple-500 rounded-lg">
+                        <ExternalLink className="h-4 w-4 text-white" />
+                      </div>
+                      <div>
+                        <p className="text-sm text-purple-600 font-medium">고유 도메인</p>
+                        <p className="text-2xl font-bold text-purple-700">
+                          {new Set(extractedLinks.map(link => link.domain)).size}
+                        </p>
+                      </div>
                     </div>
-                    <div>
-                      <p className="text-sm text-purple-600 font-medium">고유 도메인</p>
-                      <p className="text-2xl font-bold text-purple-700">
-                        {new Set(extractedLinks.map(link => link.domain)).size}
-                      </p>
-                    </div>
+                  </div>
+                  <div className="flex gap-1">
+                    <ExportButtons data={extractedLinks} type="csv" variant="outline" size="sm" />
+                    <ExportButtons data={extractedLinks} type="txt" variant="outline" size="sm" />
+                    <ExportButtons data={extractedLinks} type="json" variant="outline" size="sm" />
                   </div>
                 </CardContent>
               </Card>
 
               <Card className="bg-gradient-to-r from-orange-50 to-orange-100 border-orange-200">
                 <CardContent className="p-4">
-                  <div className="flex items-center gap-3">
-                    <div className="p-2 bg-orange-500 rounded-lg">
-                      <Filter className="h-4 w-4 text-white" />
+                  <div className="flex items-center justify-between mb-3">
+                    <div className="flex items-center gap-3">
+                      <div className="p-2 bg-orange-500 rounded-lg">
+                        <Filter className="h-4 w-4 text-white" />
+                      </div>
+                      <div>
+                        <p className="text-sm text-orange-600 font-medium">필터된 결과</p>
+                        <p className="text-2xl font-bold text-orange-700">{filteredLinks.length}</p>
+                      </div>
                     </div>
-                    <div>
-                      <p className="text-sm text-orange-600 font-medium">필터된 결과</p>
-                      <p className="text-2xl font-bold text-orange-700">{filteredLinks.length}</p>
-                    </div>
+                  </div>
+                  <div className="flex gap-1">
+                    <ExportButtons data={filteredLinks} type="csv" variant="outline" size="sm" />
+                    <ShareButton data={filteredLinks} size="sm" />
                   </div>
                 </CardContent>
               </Card>
@@ -234,11 +261,6 @@ const Index = () => {
                 </div>
               </CardContent>
             </Card>
-
-            {/* 내보내기 버튼들 */}
-            <div className="flex justify-center">
-              <ExportButtons data={filteredLinks} />
-            </div>
 
             {/* 링크 테이블 */}
             <LinkTable links={filteredLinks} />

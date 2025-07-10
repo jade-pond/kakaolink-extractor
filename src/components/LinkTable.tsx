@@ -91,6 +91,10 @@ const LinkTable: React.FC<LinkTableProps> = ({ links }) => {
     }
   };
 
+  const removeLinksFromMessage = (message: string) => {
+    return message.replace(/(https?:\/\/[^\s]+)/g, '').replace(/\s+/g, ' ').trim();
+  };
+
   const SortButton = ({ field, children }: { field: SortField; children: React.ReactNode }) => (
     <Button
       variant="ghost"
@@ -194,7 +198,7 @@ const LinkTable: React.FC<LinkTableProps> = ({ links }) => {
                     <div className="text-sm text-gray-700">
                       {expandedRows.has(link.id) ? (
                         <div>
-                          <p className="mb-2">{link.message}</p>
+                          <p className="mb-2">{removeLinksFromMessage(link.message)}</p>
                           <Button
                             variant="ghost"
                             size="sm"
@@ -207,12 +211,12 @@ const LinkTable: React.FC<LinkTableProps> = ({ links }) => {
                       ) : (
                         <div>
                           <p className="line-clamp-2">
-                            {link.message.length > 100 
-                              ? `${link.message.substring(0, 100)}...` 
-                              : link.message
+                            {removeLinksFromMessage(link.message).length > 100 
+                              ? `${removeLinksFromMessage(link.message).substring(0, 100)}...` 
+                              : removeLinksFromMessage(link.message)
                             }
                           </p>
-                          {link.message.length > 100 && (
+                          {removeLinksFromMessage(link.message).length > 100 && (
                             <Button
                               variant="ghost"
                               size="sm"
