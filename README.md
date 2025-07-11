@@ -1,73 +1,79 @@
-# Welcome to your Lovable project
+-----
 
-## Project info
+# 카카오톡 링크 추출기
 
-**URL**: https://lovable.dev/projects/3975ab11-99ec-4371-828e-b0457ada4747
+카카오톡 채팅방 대화 내보내기 CSV 파일에서 유용한 링크들을 자동으로 추출하고 깔끔하게 정리하여 제공하는 웹 기반 도구입니다. 더 이상 흩어진 채팅 속에서 중요한 링크를 찾느라 시간을 낭비하지 마세요\!
 
-## How can I edit this code?
+## ✨ 주요 기능
 
-There are several ways of editing your application.
+  * **CSV 파일 업로드**: 카카오톡 대화 내보내기 CSV 파일을 간편하게 드래그 앤 드롭하거나 선택하여 업로드하세요.
+  * **링크 자동 추출**: CSV 파일의 메시지(Message) 컬럼에서 URL 패턴을 자동으로 감지하고 추출합니다.
+  * **컨텍스트 정보 수집**: 링크가 포함된 메시지의 전체 텍스트, 발신자, 날짜 정보를 함께 추출하여 링크의 맥락을 파악할 수 있습니다.
+  * **정리된 데이터 테이블**: 추출된 링크와 관련 정보를 보기 쉬운 테이블 형태로 제공합니다.
+  * **다양한 내보내기 옵션**:
+      * **웹 테이블**: 브라우저에서 즉시 확인 가능한 테이블 뷰
+      * **Notion 공유**: Notion 데이터베이스로 직접 내보내기
+      * **CSV 다운로드**: 스프레드시트 프로그램에서 호환되는 CSV 파일로 저장
+      * **Excel 다운로드**: `.xlsx` 형태의 Excel 파일로 저장
+      * **PDF 다운로드**: 인쇄 가능한 PDF 보고서 형태로 저장
 
-**Use Lovable**
+## 🚀 시작하기
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/3975ab11-99ec-4371-828e-b0457ada4747) and start prompting.
+웹에서 바로 사용하거나 로컬 개발 환경을 설정하여 사용할 수 있습니다.
 
-Changes made via Lovable will be committed automatically to this repo.
+### 웹에서 사용하기
 
-**Use your preferred IDE**
+[여기를 클릭하여 웹앱으로 이동하기 https://chatlink-stash-organizer.lovable.app/]
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+CSV 파일을 업로드하고 바로 링크를 추출해보세요\!
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### 로컬에서 개발 환경 설정하기
 
-Follow these steps:
+이 프로젝트는 클라이언트 사이드에서만 작동하며, 서버 업로드 없이 모든 데이터 처리가 브라우저에서 수행됩니다.
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+#### 🛠️ 기술 스택
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+  * **프론트엔드**: React 또는 Vue.js (선택 사항에 따라 명시)
+  * **UI 라이브러리**: Tailwind CSS 또는 Material-UI (선택 사항에 따라 명시)
+  * **CSV 파싱**: Papa Parse
+  * **Excel 생성**: SheetJS
+  * **PDF 생성**: jsPDF 또는 Puppeteer
+  * **Notion API 연동**
 
-# Step 3: Install the necessary dependencies.
-npm i
+#### ⚙️ 설치 및 실행 (개발자용)
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+1.  저장소를 클론합니다.
+    ```bash
+    git clone [https://github.com/jade-pond/chatlink-stash-organizer/]
+    cd KakaoLink-Extractor
+    ```
+2.  의존성을 설치합니다.
+    ```bash
+    npm install
+    # 또는 yarn install
+    ```
+3.  개발 서버를 시작합니다.
+    ```bash
+    npm start
+    # 또는 yarn start
+    ```
+    (프로젝트 설정에 따라 `npm run dev` 등 다른 명령어일 수 있습니다.)
 
-**Edit a file directly in GitHub**
+## 📝 사용 방법
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+1.  **웹앱 접속**: [https://chatlink-stash-organizer.lovable.app/]에 접속합니다.
+2.  **CSV 파일 업로드**: 카카오톡 대화 내보내기 기능을 통해 얻은 CSV 파일을 웹앱으로 드래그 앤 드롭하거나 "파일 선택" 버튼을 클릭하여 업로드합니다.
+3.  **자동 분석 및 추출**: 파일이 자동으로 분석되고 메시지 내의 모든 링크가 추출됩니다.
+4.  **결과 확인**: 추출된 링크와 관련 정보(메시지, 발신자, 날짜, 도메인)가 테이블 형태로 표시됩니다.
+5.  **필터링/정렬 (선택 사항)**: 필요한 경우 링크를 필터링하거나 다양한 기준으로 정렬하여 원하는 정보를 빠르게 찾을 수 있습니다.
+6.  **내보내기**: 원하는 형식(Notion, CSV, Excel, PDF)으로 데이터를 내보내어 활용합니다.
 
-**Use GitHub Codespaces**
+## 🛡️ 보안 및 개인 정보 보호
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+KakaoLink Extractor는 **모든 데이터 처리 과정을 사용자의 브라우저 내에서 수행**하며, 어떠한 채팅 내용도 서버에 업로드하거나 저장하지 않습니다. 개인 정보 보호를 최우선으로 생각합니다.
 
-## What technologies are used for this project?
+## 💡 기여하기
 
-This project is built with:
+프로젝트 개선에 기여하고 싶다면 언제든지 환영합니다\! 이슈를 등록하거나 풀 리퀘스트를 생성하여 참여해주세요.
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/3975ab11-99ec-4371-828e-b0457ada4747) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+-----
