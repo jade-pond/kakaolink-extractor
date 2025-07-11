@@ -1,9 +1,9 @@
-
 import React, { useCallback, useState } from 'react';
 import { Upload, FileText, AlertCircle } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { toast } from '@/hooks/use-toast';
+import ImageGuide from './ImageGuide';
 
 interface FileUploadZoneProps {
   onFileUpload: (file: File) => void;
@@ -133,13 +133,14 @@ const FileUploadZone: React.FC<FileUploadZoneProps> = ({ onFileUpload, isProcess
           <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 text-left">
             <div className="flex items-start gap-2">
               <AlertCircle className="h-5 w-5 text-blue-600 mt-0.5 flex-shrink-0" />
-              <div className="text-sm">
+              <div className="text-sm flex-1">
                 <h4 className="font-medium text-blue-900 mb-1">카카오톡 CSV 파일 준비 방법:</h4>
                 <ol className="text-blue-700 space-y-1 list-decimal list-inside">
                   <li>카카오톡 채팅방 → 메뉴 → 대화 내보내기</li>
                   <li>텍스트 파일로 내보내기 → CSV 형식 선택</li>
                   <li>내보낸 CSV 파일을 여기에 업로드</li>
                 </ol>
+                <ImageGuide />
               </div>
             </div>
           </div>
