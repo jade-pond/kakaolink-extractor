@@ -1,3 +1,4 @@
+
 import React, { useState, useCallback } from 'react';
 import { Upload, Link, Filter, Search } from 'lucide-react';
 import Papa from 'papaparse';
@@ -114,7 +115,7 @@ const Index = () => {
               <Link className="h-8 w-8 text-white" />
             </div>
             <h1 className="text-4xl font-bold bg-gradient-to-r from-yellow-600 to-orange-600 bg-clip-text text-transparent">
-              KakaoLink Extractor
+              카카오톡 링크 추출기
             </h1>
           </div>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">

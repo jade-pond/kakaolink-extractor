@@ -1,3 +1,4 @@
+
 import React, { useCallback, useState } from 'react';
 import { Upload, FileText, AlertCircle } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
@@ -71,6 +72,8 @@ const FileUploadZone: React.FC<FileUploadZoneProps> = ({ onFileUpload, isProcess
     if (file && validateFile(file)) {
       onFileUpload(file);
     }
+    // 파일 선택 후 input을 초기화하여 같은 파일을 다시 선택할 수 있게 함
+    e.target.value = '';
   }, [onFileUpload]);
 
   return (
@@ -121,11 +124,14 @@ const FileUploadZone: React.FC<FileUploadZoneProps> = ({ onFileUpload, isProcess
             <label htmlFor="csv-upload">
               <Button 
                 type="button" 
-                className="bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-600 hover:to-orange-600 text-white"
+                className="bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-600 hover:to-orange-600 text-white cursor-pointer"
                 disabled={isProcessing}
+                asChild
               >
-                <FileText className="mr-2 h-4 w-4" />
-                파일 선택
+                <span>
+                  <FileText className="mr-2 h-4 w-4" />
+                  파일 선택
+                </span>
               </Button>
             </label>
           </div>
