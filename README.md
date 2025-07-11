@@ -6,6 +6,8 @@
 
 중요하다고 생각해서 저장했던 정보들을 손쉽게 찾아볼 수 있습니다!🤓
 
+[[여기를 클릭하여 웹앱으로 이동하기](https://chatlink-stash-organizer.lovable.app/)]
+
 <img width="742" height="859" alt="image" src="https://github.com/user-attachments/assets/4a36b06b-909f-4cde-b893-8d0c9303df8c" />
 
 ## ✨ 주요 기능
@@ -75,7 +77,7 @@ CSV 파일을 업로드하고 바로 링크를 추출해보세요\!
 
 ## 📝 사용 방법
 
-1.  **웹앱 접속**: [https://chatlink-stash-organizer.lovable.app/]에 접속합니다.
+1.  **웹앱 접속**: [https://chatlink-stash-organizer.lovable.app/]
 2.  **CSV 파일 업로드**: 카카오톡 대화 내보내기 기능을 통해 얻은 CSV 파일을 웹앱으로 드래그 앤 드롭하거나 "파일 선택" 버튼을 클릭하여 업로드합니다.
 3.  **자동 분석 및 추출**: 파일이 자동으로 분석되고 메시지 내의 모든 링크가 추출됩니다.
 4.  **결과 확인**: 추출된 링크와 관련 정보(메시지, 발신자, 날짜, 도메인)가 테이블 형태로 표시됩니다.
