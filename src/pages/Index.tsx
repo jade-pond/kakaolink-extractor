@@ -1,3 +1,4 @@
+
 import React, { useState, useCallback } from 'react';
 import { Upload, Link, Filter, Search } from 'lucide-react';
 import Papa from 'papaparse';
@@ -131,58 +132,28 @@ const Index = () => {
         {extractedLinks.length > 0 && (
           <div className="space-y-6">
             {/* 통계 카드 */}
-            <div className="max-w-4xl mx-auto">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <Card className="bg-gradient-to-r from-blue-50 to-blue-100 border-blue-200">
-                  <CardContent className="p-6">
-                    <div className="flex items-center justify-between mb-4">
-                      <div className="flex items-center gap-3">
-                        <div className="p-3 bg-blue-500 rounded-lg">
-                          <Link className="h-6 w-6 text-white" />
-                        </div>
-                        <div>
-                          <p className="text-sm text-blue-600 font-medium">총 링크 수</p>
-                          <p className="text-3xl font-bold text-blue-700">{extractedLinks.length}</p>
-                        </div>
+            <div className="max-w-md mx-auto">
+              <Card className="bg-gradient-to-r from-blue-50 to-blue-100 border-blue-200">
+                <CardContent className="p-6">
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="flex items-center gap-3">
+                      <div className="p-3 bg-blue-500 rounded-lg">
+                        <Link className="h-6 w-6 text-white" />
+                      </div>
+                      <div>
+                        <p className="text-sm text-blue-600 font-medium">총 링크 수</p>
+                        <p className="text-3xl font-bold text-blue-700">{extractedLinks.length}</p>
                       </div>
                     </div>
-                    <div className="flex gap-2 flex-wrap">
-                      <ExportButtons data={extractedLinks} type="csv" variant="outline" size="sm" />
-                      <ExportButtons data={extractedLinks} type="txt" variant="outline" size="sm" />
-                      <ExportButtons data={extractedLinks} type="json" variant="outline" size="sm" />
-                      <ShareButton data={extractedLinks} size="sm" />
-                    </div>
-                  </CardContent>
-                </Card>
-
-                <Card className="bg-gradient-to-r from-green-50 to-green-100 border-green-200">
-                  <CardContent className="p-6">
-                    <div className="flex items-center justify-between mb-4">
-                      <div className="flex items-center gap-3">
-                        <div className="p-3 bg-green-500 rounded-lg">
-                          <Upload className="h-6 w-6 text-white" />
-                        </div>
-                        <div>
-                          <p className="text-sm text-green-600 font-medium">새 파일 업로드</p>
-                          <p className="text-sm text-green-700">다른 파일을 분석하세요</p>
-                        </div>
-                      </div>
-                    </div>
-                    <Button
-                      onClick={() => {
-                        setFile(null);
-                        setExtractedLinks([]);
-                        setSearchTerm('');
-                        setSelectedUser('');
-                      }}
-                      className="w-full bg-green-500 hover:bg-green-600 text-white"
-                    >
-                      <Upload className="mr-2 h-4 w-4" />
-                      새 파일 업로드
-                    </Button>
-                  </CardContent>
-                </Card>
-              </div>
+                  </div>
+                  <div className="flex gap-2 flex-wrap">
+                    <ExportButtons data={extractedLinks} type="csv" variant="outline" size="sm" />
+                    <ExportButtons data={extractedLinks} type="txt" variant="outline" size="sm" />
+                    <ExportButtons data={extractedLinks} type="json" variant="outline" size="sm" />
+                    <ShareButton data={extractedLinks} size="sm" />
+                  </div>
+                </CardContent>
+              </Card>
             </div>
 
             {/* 필터 및 검색 */}
@@ -196,21 +167,21 @@ const Index = () => {
               <CardContent>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <label htmlFor="search" className="text-sm font-medium text-gray-700">검색</label>
+                    <Label htmlFor="search">검색</Label>
                     <div className="relative">
                       <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
-                      <input
+                      <Input
                         id="search"
                         placeholder="링크, 메시지, 도메인으로 검색..."
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
-                        className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
+                        className="pl-10"
                       />
                     </div>
                   </div>
                   
                   <div className="space-y-2">
-                    <label htmlFor="user-filter" className="text-sm font-medium text-gray-700">사용자 필터</label>
+                    <Label htmlFor="user-filter">사용자 필터</Label>
                     <select
                       id="user-filter"
                       value={selectedUser}
@@ -230,7 +201,7 @@ const Index = () => {
             {/* 링크 테이블 */}
             <LinkTable links={filteredLinks} />
 
-            {/* 뒤로 가기 버튼 */}
+            {/* 새 파일 업로드 버튼 */}
             <div className="text-center">
               <Button
                 onClick={() => {
@@ -243,7 +214,7 @@ const Index = () => {
                 className="bg-white hover:bg-gray-50"
               >
                 <Upload className="mr-2 h-4 w-4" />
-                뒤로 가기
+                새 파일 업로드
               </Button>
             </div>
           </div>
