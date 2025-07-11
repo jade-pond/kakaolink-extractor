@@ -6,8 +6,9 @@
 
 중요하다고 생각해서 저장했던 정보들을 손쉽게 찾아볼 수 있습니다!🤓
 
-[[여기를 클릭하여 웹앱으로 이동하기](https://chatlink-stash-organizer.lovable.app/)]
-[[여기를 클릭하여 demo 확인하기](https://drive.google.com/file/d/1a_gAXnRNPlruU_JYTJgWu64jnSzgJUTX/view?usp=sharing)]
+[[🔗 웹앱 바로가기](https://chatlink-stash-organizer.lovable.app/)]
+
+[[🎬 demo 확인하기](https://drive.google.com/file/d/1a_gAXnRNPlruU_JYTJgWu64jnSzgJUTX/view?usp=sharing)]
 
 
 Uploading 화면 기록 2025-07-11 오전 10.54.34.mov…
