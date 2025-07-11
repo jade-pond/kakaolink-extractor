@@ -201,7 +201,7 @@ const Index = () => {
             {/* 링크 테이블 */}
             <LinkTable links={filteredLinks} />
 
-            {/* 새 파일 업로드 버튼 */}
+            {/* 뒤로 가기 버튼 */}
             <div className="text-center">
               <Button
                 onClick={() => {
@@ -214,7 +214,7 @@ const Index = () => {
                 className="bg-white hover:bg-gray-50"
               >
                 <Upload className="mr-2 h-4 w-4" />
-                새 파일 업로드
+                뒤로 가기
               </Button>
             </div>
           </div>
